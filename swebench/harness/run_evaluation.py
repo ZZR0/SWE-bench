@@ -68,6 +68,7 @@ def main(
     timeout: int,
     verbose: bool,
     num_processes: int = -1,
+    path_conda: str = None,
 ):
     """
     Runs evaluation on predictions for each model/repo/version combination.
@@ -80,6 +81,7 @@ def main(
         skip_existing (bool): Whether to skip evaluations for predictions that already have logs.
         timeout (int): Timeout for each evaluation.
         verbose (bool): Whether to print verbose output.
+        path_conda (str): Path to the conda environment file.
 
     Raises:
         ValueError: If log_dir is not a directory, testbed is not a directory, or swe_bench_tasks does not exist.
@@ -156,6 +158,7 @@ def main(
                 args.timeout = timeout
                 args.verbose = verbose
                 args.conda_link = conda_link
+                args.path_conda = path_conda
 
                 # Remove predictions that have already been evaluated
                 repo_version_predictions = map_repo_version_to_predictions[repo][version]
@@ -224,6 +227,7 @@ if __name__ == "__main__":
     parser.add_argument("--timeout", type=int, help="(Optional) Timeout in seconds (default: 900)", default=900)
     parser.add_argument("--verbose", action="store_true", help="(Optional) Verbose mode")
     parser.add_argument("--num_processes", type=int, help="(Optional) Number of processes to use.", default=-1)
+    parser.add_argument("--path_conda", type=str, default=None, help="(Optional) Path to conda installation")
     args = parser.parse_args()
     logger.propagate = args.verbose
     main(**vars(args))
