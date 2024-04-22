@@ -126,6 +126,7 @@ class TestbedContextManager:
             logger_testbed.setLevel(logging.INFO)
         self.conda_link = conda_link
         self.log_dir = os.path.abspath(log_dir)
+        self.repo_dir = os.path.abspath(repo_dir)
         self.old_dir = os.getcwd()
         self.timeout = timeout
         self.verbose = verbose
@@ -320,7 +321,7 @@ class TestbedContextManager:
                 self.log.write(f"Setting up testbed for {env_name}")
 
                 # Clone github per repo/version
-                repo_path = repo_dir if repo_dir is not None else os.path.join(self.testbed, env_name) 
+                repo_path = self.repo_dir if self.repo_dir is not None else os.path.join(self.testbed, env_name) 
                 if not os.path.exists(repo_path):
                     clone_repo(repo, repo_path)
                     self.log.write(f"Cloned {repo} to {repo_path}")
