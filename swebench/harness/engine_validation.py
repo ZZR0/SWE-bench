@@ -93,7 +93,6 @@ def setup_testbed(data: dict):
         data_dict.log_dir,
         conda_link=data_dict.conda_link,
         path_conda=data_dict.path_conda,
-        repo_dir=data_dict.repo_dir,
         testbed=data_dict.testbed,
         temp_dir=data_dict.temp_dir,
         timeout=data_dict.timeout,
@@ -153,7 +152,6 @@ if __name__ == "__main__":
     parser.add_argument("--log_dir", type=str, help="Path to log directory", required=True)
     parser.add_argument("--conda_link", type=str, default=None, help="(Optional) URL to conda installation to use")
     parser.add_argument("--log_suffix", type=str, default=None, help="(Optional) Suffix to append to log file names")
-    parser.add_argument("--repo_dir", type=str, default=None, help="(Optional) Path to testbed directory")
     parser.add_argument("--path_conda", type=str, help="(Optional) Path to miniconda3 or anaconda installation")
     parser.add_argument("--testbed", type=str, help="(Optional) Path to testbed directory")
     parser.add_argument("--temp_dir", type=str, help="(Optional) Path to temporary directory for storing virtual envs")
