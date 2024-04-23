@@ -473,17 +473,17 @@ MAP_VERSION_TO_INSTALL_ASTROID = {
 }
 for k in ["2.5", "2.6"]:
     MAP_VERSION_TO_INSTALL_ASTROID[k]["pip_packages"] = [
-        "lazy_object_proxy==1.9.0", "wrapt==1.12.1"]
+        "lazy_object_proxy==1.9.0", "wrapt==1.12.1", "pytest"]
 for k in ["2.9", "2.10"]:
     MAP_VERSION_TO_INSTALL_ASTROID[k]["pip_packages"] = [
         "lazy_object_proxy==1.9.0", "wrapt==1.13.3",
-        "typing-extensions==4.8.0", "setuptools==68.0.0"]
+        "typing-extensions==4.8.0", "setuptools==68.0.0", "pytest"]
 for k in ["2.12", "2.13", "2.14", "2.15"]:
     MAP_VERSION_TO_INSTALL_ASTROID[k]["pip_packages"] = [
-        "lazy_object_proxy==1.9.0", "wrapt==1.15.0", "typing-extensions==4.8.0"]
+        "lazy_object_proxy==1.9.0", "wrapt==1.15.0", "typing-extensions==4.8.0", "pytest"]
 MAP_VERSION_TO_INSTALL_ASTROID["2.7"]["pip_packages"] = [
-    "lazy_object_proxy==1.9.0", "wrapt==1.12.1", "typing-extensions==4.8.0"]
-MAP_VERSION_TO_INSTALL_ASTROID["3.0"]["pip_packages"] = ["typing-extensions==4.8.0"]
+    "lazy_object_proxy==1.9.0", "wrapt==1.12.1", "typing-extensions==4.8.0", "pytest"]
+MAP_VERSION_TO_INSTALL_ASTROID["3.0"]["pip_packages"] = ["typing-extensions==4.8.0", "pytest"]
 
 
 MAP_VERSION_TO_INSTALL_MARSHMALLOW = {
@@ -508,7 +508,8 @@ MAP_VERSION_TO_INSTALL_PYDICOM = {
     k: {
         "python": "3.6",
         "install": "pip install -e .",
-        "packages": "numpy"
+        "packages": "numpy",
+        "pip_packages": ["pytest"],
     }
     for k in ['1.2', '1.3', '1.4', '2.0', '2.1', '2.2', '2.3']
 }

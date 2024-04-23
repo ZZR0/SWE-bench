@@ -327,6 +327,8 @@ class TestbedContextManager:
                     self.log.write(f"Repo for {repo_prefix} version {version} exists: {repo_path}; skipping")
 
                 # Skip if conda environment already exists
+                self.log.write(f"Environment: {env_name}")
+                self.log.write(f"List of existing environments: {env_list}")
                 if env_name in env_list:
                     self.log.write(f"Environment {env_name} already exists; skipping")
                     continue
@@ -385,7 +387,7 @@ class TestbedContextManager:
                 else:
                     # Create environment + install dependencies
                     cmd = f"{exec_cmd} create -n {env_name} python={install['python']} {pkgs} -y"
-                    self.log.write(f"Creating environment {env_name}")
+                    self.log.write(f"Creating environment {env_name}; Command: {cmd}")
                     self.exec(cmd.split(" "))
                 
                 arch = platform.machine()
