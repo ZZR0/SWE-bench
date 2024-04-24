@@ -516,7 +516,7 @@ class TaskEnvContextManager:
 
         self.cmd_activate = (
             f". {os.path.join(self.conda_path, 'bin', 'activate')} "
-            + f"{self.venv} && echo 'activate successful'"
+            + f"&& conda activate {self.venv} && echo 'activate successful'"
         )
         self.timeout = timeout
 
